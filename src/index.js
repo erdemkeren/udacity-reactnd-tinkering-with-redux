@@ -1,45 +1,26 @@
 import { createStore } from 'redux'
-
-const USER_GIVEN_TACO = 'user-given-taco'
-
-const defaultState = {
-    remainingTacos: 5,
-    givenTacos: [],
-}
-
-const createUserGivenTacoAction = (from_user, to_user, reason) => ({
-    type: USER_GIVEN_TACO,
-    from_user,
-    to_user,
-    reason,
-})
+import { reducer } from './reducers'
+import { createUserGivenTacoAction } from './actions'
 
 window.createUserGivenTacoAction = createUserGivenTacoAction
 
-const reducer = (state = defaultState, action) => {
-    switch (action.type) {
-        case USER_GIVEN_TACO:
-            return {
-                ...state,
-                remainingTacos: state.remainingTacos - 1,
-                givenTacos: [
-                    ...state.givenTacos,
-                    {
-                        from: action.from_user,
-                        to: action.to_user,
-                        reason: action.reason,
-                    }
-                ]
-            }
-        default:
-            return state
-    }    
-}
-
 const store = createStore(reducer)
+window.store = store
 
 const unsubscribe = store.subscribe(() => console.log(store.getState()))
-
 window.unsubscribe = unsubscribe
 
-window.store = store
+store.dispatch(createUserGivenTacoAction('Erdem', 'A...m', 'he attended to webinar!'))
+store.dispatch(createUserGivenTacoAction('Erdem', 'An...a', 'he attended to webinar!'))
+store.dispatch(createUserGivenTacoAction('Erdem', 'a...f', 'he attended to webinar!'))
+store.dispatch(createUserGivenTacoAction('Erdem', 'B..r', 'he attended to webinar!'))
+store.dispatch(createUserGivenTacoAction('Erdem', 'F...x', 'he attended to webinar!'))
+store.dispatch(createUserGivenTacoAction('Erdem', 'P.....t', 'he attended to webinar!'))
+
+store.getState().givenTacos.map(tacoLog => console.log([
+    `"${tacoLog.from}" gave a taco to`,
+    `"${tacoLog.to}" because`,
+    `${tacoLog.reason}`
+].join(' ')))
+
+console.log(`He has ${store.getState().remainingTacos} tacos remaining.`)
