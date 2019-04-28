@@ -1,12 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { createStore } from 'redux'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const USER_GIVEN_TACO = 'user-given-taco'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const defaultState = {
+    remainingTacos: 5,
+    givenTacos: [],
+}
+
+const createUserGivenTacoAction = (from_user, to_user, reason) => ({
+    type: USER_GIVEN_TACO,
+    from_user,
+    to_user,
+    reason,
+})
+
+window.createUserGivenTacoAction = createUserGivenTacoAction
+
+const reducer = (state = defaultState, action) => {
+    switch (action.type) {
+        case USER_GIVEN_TACO:
+            return {
+                ...state,
+                remainingTacos: state.remainingTacos - 1,
+                givenTacos: [
+                    ...state.givenTacos,
+                    {
+                        from: action.from_user,
+                        to: action.to_user,
+                        reason: action.reason,
+                    }
+                ]
+            }
+        default:
+            return state
+    }    
+}
+
+const store = createStore(reducer)
+
+const unsubscribe = store.subscribe(() => console.log(store.getState()))
+
+window.unsubscribe = unsubscribe
+
+window.store = store
