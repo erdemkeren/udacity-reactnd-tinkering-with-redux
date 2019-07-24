@@ -18,9 +18,18 @@ store.dispatch(createUserGivenTacoAction('Erdem', 'F...x', 'he attended to webin
 store.dispatch(createUserGivenTacoAction('Erdem', 'P.....t', 'he attended to webinar!'))
 
 store.getState().givenTacos.map(tacoLog => console.log([
-    `"${tacoLog.from}" gave a taco to`,
+    `"${tacoLog.from}" gave a 🌮 to`,
     `"${tacoLog.to}" because`,
     `${tacoLog.reason}`
 ].join(' ')))
 
-console.log(`He has ${store.getState().remainingTacos} tacos remaining.`)
+console.log(`He has ${store.getState().remainingTacos} 🌮 tacos remaining.`)
+
+document.getElementsByTagName("body")[0].innerHTML = `
+    <div>
+        <h1>This application has no UI.</h1>
+        <p>Please open developer console to see the output.</p>
+        <p>The idea is: Erdem has 🌮 tacos. He gives these 🌮 tacos to Webinar attendees.</p>
+        <p>Redux is used transfer these 🌮 tacos and store the state.</p>
+    </div>
+`
