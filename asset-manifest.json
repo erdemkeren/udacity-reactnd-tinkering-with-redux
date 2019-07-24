@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/static/js/main.2671805a.chunk.js",
-    "main.js.map": "/static/js/main.2671805a.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.c5541365.js",
-    "runtime~main.js.map": "/static/js/runtime~main.c5541365.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.79f7a9699e2e519fe91a33597cae41b5.js": "/precache-manifest.79f7a9699e2e519fe91a33597cae41b5.js",
-    "service-worker.js": "/service-worker.js"
+    "main.js": "/udacity-reactnd-tinkering-with-redux/static/js/main.2671805a.chunk.js",
+    "main.js.map": "/udacity-reactnd-tinkering-with-redux/static/js/main.2671805a.chunk.js.map",
+    "runtime~main.js": "/udacity-reactnd-tinkering-with-redux/static/js/runtime~main.6763fe04.js",
+    "runtime~main.js.map": "/udacity-reactnd-tinkering-with-redux/static/js/runtime~main.6763fe04.js.map",
+    "index.html": "/udacity-reactnd-tinkering-with-redux/index.html",
+    "precache-manifest.1441e6d0a5426c6965a1113da6ce2f68.js": "/udacity-reactnd-tinkering-with-redux/precache-manifest.1441e6d0a5426c6965a1113da6ce2f68.js",
+    "service-worker.js": "/udacity-reactnd-tinkering-with-redux/service-worker.js"
   }
 }
